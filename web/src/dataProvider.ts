@@ -101,7 +101,7 @@ export const dataProvider: DataProvider = {
     `;
 
     try {
-      const data: any = await client.request(mutation, { input: variables });
+      const data: any = await client.request(mutation, { input: variables } as Record<string, unknown>);
       return { data: data[mutationName] };
     } catch {
       return { data: { id: String(Date.now()), ...(variables as object) } as any };
@@ -121,7 +121,7 @@ export const dataProvider: DataProvider = {
     `;
 
     try {
-      const data: any = await client.request(mutation, { id, input: variables });
+      const data: any = await client.request(mutation, { id, input: variables } as Record<string, unknown>);
       return { data: data[mutationName] };
     } catch {
       return { data: { id, ...(variables as object) } as any };

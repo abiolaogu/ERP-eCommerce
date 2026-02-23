@@ -133,7 +133,7 @@ const OrderShow: React.FC = () => {
         </div>
       </div>
 
-      {order.status !== "cancelled" && (
+      {(order.status as string) !== "cancelled" && (
         <Card style={{ borderRadius: 10, marginBottom: 16 }}>
           <Steps
             current={currentStep}
