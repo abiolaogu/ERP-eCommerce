@@ -1,0 +1,13 @@
+api_version: v1
+module_id: erp_ecommerce
+repository: ERP-eCommerce
+sku: erp.ecommerce
+subscription:
+  standalone: true
+  suite: true
+integration:
+  control_plane: ERP-Platform
+  identity_provider: ERP-Directory
+  event_backbone: NATS
+aidd:
+  guardrails_file: erp/aidd.guardrails.yaml
