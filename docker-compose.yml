@@ -1,0 +1,123 @@
+version: '3.9'
+
+services:
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:latest
+    command:
+      - redpanda
+      - start
+      - --smp 1
+      - --memory 1G
+      - --reserve-memory 0M
+      - --overprovisioned
+      - --kafka-addr internal://0.0.0.0:9092,external://0.0.0.0:19092
+      - --advertise-kafka-addr internal://redpanda:9092,external://localhost:19092
+      - --pandaproxy-addr internal://0.0.0.0:8082,external://0.0.0.0:18082
+      - --advertise-pandaproxy-addr internal://redpanda:8082,external://localhost:18082
+      - --schema-registry-addr internal://0.0.0.0:8081,external://0.0.0.0:18081
+      - --rpc-addr redpanda:33145
+      - --advertise-rpc-addr redpanda:33145
+    ports:
+      - 18081:18081
+      - 18082:18082
+      - 19092:19092
+      - 9092:9092
+
+  catalog-service:
+    build:
+      context: .
+      dockerfile: services/catalog/Dockerfile
+    environment:
+      - PORT=3000
+      - KAFKA_BROKERS=redpanda:9092
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+    depends_on:
+      - redpanda
+    ports:
+      - "3000:3000"
+
+  orders-service:
+    build:
+      context: .
+      dockerfile: services/orders/Dockerfile
+    environment:
+      - PORT=3001
+      - KAFKA_BROKERS=redpanda:9092
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - OMNIROUTE_API_BASE_URL=${OMNIROUTE_API_BASE_URL}
+      - OMNIROUTE_API_KEY=${OMNIROUTE_API_KEY}
+      - OMNIROUTE_TENANT_ID=${OMNIROUTE_TENANT_ID}
+    depends_on:
+      - redpanda
+    ports:
+      - "3001:3001"
+
+  inventory-service:
+    build:
+      context: .
+      dockerfile: services/inventory/Dockerfile
+    environment:
+      - PORT=3002
+      - KAFKA_BROKERS=redpanda:9092
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+    depends_on:
+      - redpanda
+    ports:
+      - "3002:3002"
+
+  group-commerce-service:
+    build:
+      context: .
+      dockerfile: services/group-commerce/Dockerfile
+    environment:
+      - PORT=3003
+      - KAFKA_BROKERS=redpanda:9092
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+    depends_on:
+      - redpanda
+    ports:
+      - "3003:3003"
+
+  payments-service:
+    build:
+      context: .
+      dockerfile: services/payments/Dockerfile
+    environment:
+      - PORT=3004
+      - KAFKA_BROKERS=redpanda:9092
+      - DATABASE_URL=${DATABASE_URL}
+    depends_on:
+      - redpanda
+    ports:
+      - "3004:3004"
+
+  shipping-service:
+    build:
+      context: .
+      dockerfile: services/shipping/Dockerfile
+    environment:
+      - PORT=3005
+      - KAFKA_BROKERS=redpanda:9092
+      - DATABASE_URL=${DATABASE_URL}
+      - OMNIROUTE_API_BASE_URL=${OMNIROUTE_API_BASE_URL}
+      - OMNIROUTE_API_KEY=${OMNIROUTE_API_KEY}
+      - OMNIROUTE_TENANT_ID=${OMNIROUTE_TENANT_ID}
+    depends_on:
+      - redpanda
+    ports:
+      - "3005:3005"
+
+  n8n:
+    image: n8nio/n8n:1.70.1
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=password
+    ports:
+      - "5678:5678"
+    depends_on:
+      - redpanda
