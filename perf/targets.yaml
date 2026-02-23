@@ -1,0 +1,26 @@
+version: 1
+module: ERP-eCommerce
+slo:
+  read_p99_ms: 200
+  write_p99_ms: 500
+  availability_pct: 99.95
+  error_rate_pct: 0.1
+  throughput_rps_per_instance: 10000
+budgets:
+  db_query_p95_ms: 50
+  cache_hit_ratio_pct: 85
+  queue_lag_seconds: 5
+  cold_start_seconds: 2
+load_profiles:
+  - name: baseline
+    vus: 50
+    duration: 5m
+  - name: peak
+    vus: 500
+    duration: 15m
+optimizations_required:
+  - connection_pooling
+  - keyset_pagination
+  - redis_caching
+  - request_timeout_budgeting
+  - structured_logging_with_correlation_id

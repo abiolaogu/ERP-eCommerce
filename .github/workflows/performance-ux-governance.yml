@@ -1,0 +1,37 @@
+name: performance-ux-governance
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  governance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate performance and UX contracts
+        run: |
+          set -euo pipefail
+          test -f perf/targets.yaml
+          test -f ux/ui.manifest.json
+          grep -q '^module:' perf/targets.yaml
+          python3 - <<'PY'
+import json
+from pathlib import Path
+
+manifest = json.loads(Path('ux/ui.manifest.json').read_text(encoding='utf-8'))
+assert manifest.get('module'), 'ux/ui.manifest.json missing module'
+assert isinstance(manifest.get('goals'), dict), 'ux/ui.manifest.json missing goals object'
+
+required_docs = [
+    'docs/PERFORMANCE.md',
+    'docs/UX.md',
+    'docs/FEATURE_SUPERIORITY.md',
+    'docs/AGILITY.md',
+]
+for doc in required_docs:
+    assert Path(doc).is_file(), f'missing {doc}'
+
+print('performance/ux governance passed')
+PY

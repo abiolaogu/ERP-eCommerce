@@ -1,0 +1,31 @@
+{
+  "module": "ERP-eCommerce",
+  "design_system": "ERP Nova",
+  "goals": {
+    "task_completion_time_reduction_pct": 30,
+    "error_reduction_pct": 40,
+    "first_contentful_paint_ms": 1200,
+    "lighthouse_performance_min": 95,
+    "lighthouse_accessibility_min": 95
+  },
+  "experience_principles": [
+    "role-aware workflows",
+    "progressive disclosure",
+    "predictive assistance with user control",
+    "keyboard-first efficiency",
+    "accessible by default"
+  ],
+  "tokens": {
+    "spacing_scale": [4, 8, 12, 16, 24, 32, 48],
+    "radius_scale": [6, 10, 14],
+    "motion": {
+      "standard_ms": 180,
+      "emphasis_ms": 260
+    }
+  },
+  "navigation": {
+    "command_palette": true,
+    "quick_actions": true,
+    "deep_linkable_state": true
+  }
+}
