@@ -1,3 +1,5 @@
+import "@testing-library/jest-dom";
+
 if (!window.matchMedia) {
   window.matchMedia = (query: string): MediaQueryList =>
     ({
@@ -11,3 +13,9 @@ if (!window.matchMedia) {
       dispatchEvent: () => false,
     }) as MediaQueryList;
 }
+
+Object.defineProperty(window, "getComputedStyle", {
+  value: () => ({
+    getPropertyValue: () => "",
+  }),
+});
