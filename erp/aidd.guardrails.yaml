@@ -1,10 +1,17 @@
-version: v1
-min_confidence: 0.70
-medium_confidence: 0.82
-max_blast_radius_records: 5000
-high_value_amount_usd: 100000
-require_human_approval:
-  - finance_high_value
-  - payroll_run
-  - identity_privilege_escalation
-  - mass_delete
+version: 1
+module: ERP-eCommerce
+autonomous_actions:
+  - read_only_queries
+  - low_risk_notifications
+supervised_actions:
+  - data_mutations
+  - workflow_automation
+  - bulk_operations
+prohibited_actions:
+  - cross_tenant_data_access
+  - irreversible_delete_without_backup
+  - privilege_escalation
+controls:
+  require_human_in_the_loop_for_high_risk: true
+  decision_logging: true
+  rollback_window_hours: 24

@@ -1,0 +1,53 @@
+# ERP-eCommerce Events
+
+## Publishing Convention
+- `erp.<module>.<entity>.<action>`
+- CloudEvents payload envelope
+
+## Discovered Topics
+- `erp.ecommerce`
+- `erp.ecommerce.analytics.created`
+- `erp.ecommerce.analytics.deleted`
+- `erp.ecommerce.analytics.listed`
+- `erp.ecommerce.analytics.read`
+- `erp.ecommerce.analytics.updated`
+- `erp.ecommerce.checkout.created`
+- `erp.ecommerce.checkout.deleted`
+- `erp.ecommerce.checkout.listed`
+- `erp.ecommerce.checkout.read`
+- `erp.ecommerce.checkout.updated`
+- `erp.ecommerce.fulfillment.created`
+- `erp.ecommerce.fulfillment.deleted`
+- `erp.ecommerce.fulfillment.listed`
+- `erp.ecommerce.fulfillment.read`
+- `erp.ecommerce.fulfillment.updated`
+- `erp.ecommerce.loyalty.created`
+- `erp.ecommerce.loyalty.deleted`
+- `erp.ecommerce.loyalty.listed`
+- `erp.ecommerce.loyalty.read`
+- `erp.ecommerce.loyalty.updated`
+- `erp.ecommerce.search.created`
+- `erp.ecommerce.search.deleted`
+- `erp.ecommerce.search.listed`
+- `erp.ecommerce.search.read`
+- `erp.ecommerce.search.updated`
+- `erp.ecommerce.social-commerce.created`
+- `erp.ecommerce.social-commerce.deleted`
+- `erp.ecommerce.social-commerce.listed`
+- `erp.ecommerce.social-commerce.read`
+- `erp.ecommerce.social-commerce.updated`
+- `erp.ecommerce.storefront.created`
+- `erp.ecommerce.storefront.deleted`
+- `erp.ecommerce.storefront.listed`
+- `erp.ecommerce.storefront.read`
+- `erp.ecommerce.storefront.updated`
+- `erp.ecommerce.subscription-commerce.created`
+- `erp.ecommerce.subscription-commerce.deleted`
+- `erp.ecommerce.subscription-commerce.listed`
+- `erp.ecommerce.subscription-commerce.read`
+- `erp.ecommerce.subscription-commerce.updated`
+- `erp.ecommerce.theme.created`
+- `erp.ecommerce.theme.deleted`
+- `erp.ecommerce.theme.listed`
+- `erp.ecommerce.theme.read`
+- `erp.ecommerce.theme.updated`
