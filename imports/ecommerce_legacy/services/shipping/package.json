@@ -1,0 +1,38 @@
+{
+    "name": "@fusioncommerce/shipping-service",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "start": "node dist/index.js",
+        "dev": "node --loader ts-node/esm src/index.ts",
+        "lint": "tsc --noEmit",
+        "test": "jest",
+        "migrate": "knex migrate:latest"
+    },
+    "dependencies": {
+        "fastify": "^4.26.2",
+        "pino": "^9.1.0",
+        "ts-node": "^10.9.2",
+        "uuid": "^9.0.1",
+        "knex": "^3.1.0",
+        "pg": "^8.11.3",
+        "@fusioncommerce/contracts": "1.0.0",
+        "@fusioncommerce/event-bus": "1.0.0",
+        "@fusioncommerce/database": "1.0.0",
+        "@fusioncommerce/omniroute-sdk": "1.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.24",
+        "@types/uuid": "^9.0.7",
+        "typescript": "^5.3.3",
+        "jest": "^29.7.0",
+        "ts-jest": "^29.1.2",
+        "@types/jest": "^29.5.12"
+    },
+    "description": "",
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

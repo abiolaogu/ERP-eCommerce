@@ -1,0 +1,32 @@
+{
+  "name": "@fusioncommerce/orders-service",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/index.js",
+    "dev": "node --loader ts-node/esm src/index.ts",
+    "lint": "tsc --noEmit",
+    "test": "jest",
+    "migrate": "knex migrate:latest"
+  },
+  "dependencies": {
+    "@fastify/ajv-compiler": "^4.0.0",
+    "@fusioncommerce/contracts": "1.0.0",
+    "@fusioncommerce/database": "file:../../packages/database",
+    "@fusioncommerce/event-bus": "1.0.0",
+    "@fusioncommerce/omniroute-sdk": "1.0.0",
+    "fastify": "^4.26.2",
+    "pino": "^9.1.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/uuid": "^9.0.7",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.2"
+  }
+}

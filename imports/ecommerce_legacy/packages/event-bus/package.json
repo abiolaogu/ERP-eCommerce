@@ -1,0 +1,15 @@
+{
+  "name": "@fusioncommerce/event-bus",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "tsc --noEmit",
+    "test": "jest"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4"
+  }
+}
