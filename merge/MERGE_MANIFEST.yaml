@@ -1,0 +1,9 @@
+version: 2026-02-23
+target_repo: ERP-eCommerce
+module_name: Consumer eCommerce
+summary: Consumer storefront consolidation
+merge_sources:
+  - ERP-eCommerce
+  - eCommerce
+integration_mode: standalone_plus_suite
+aidd_enforced: true
