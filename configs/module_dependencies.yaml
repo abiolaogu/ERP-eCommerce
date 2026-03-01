@@ -1,0 +1,23 @@
+module: ERP-eCommerce
+
+dependencies: []
+
+runtime_contracts:
+  entitlements: ERP-Platform
+  identity: ERP-IAM
+  events: Redpanda
+
+# AIOps Integration
+aiops:
+  module: ERP-AIOps
+  optional: true
+  capabilities:
+    - health_monitoring
+    - anomaly_detection
+    - auto_remediation
+    - slo_tracking
+  topics_produced:
+    - aiops.module.health
+  topics_consumed:
+    - aiops.alerts
+    - aiops.commands
