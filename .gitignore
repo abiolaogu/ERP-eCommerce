@@ -1,10 +1,8 @@
+.next
 node_modules
-coverage
-dist
-npm-debug.log
-.DS_Store
+out
 .env
-web/dist/
-*.tsbuildinfo
-.dart_tool/
-**/.dart_tool/
+.env.local
+coverage
+npm-debug.log*
+.DS_Store
