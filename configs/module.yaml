@@ -1,0 +1,32 @@
+module:
+  name: ERP-eCommerce
+  slug: ecommerce
+  version: "1.0.0"
+  stack: "next16-shadcn-tailwind4"
+
+messaging:
+  broker: shared-redpanda
+  topics_produced:
+    - "ecommerce.health"
+    - "ecommerce.errors"
+    - "ecommerce.metrics"
+  topics_consumed:
+    - "aiops.alerts"
+    - "aiops.commands"
+  consumer_group: "cg.${NEXT_PUBLIC_ENV}.${NEXT_PUBLIC_ORG}.ecommerce.frontend"
+
+aiops:
+  monitored: true
+  health_endpoint: "/api/health"
+  slo:
+    availability: 99.9
+    latency_p95_ms: 2000
+    error_rate_pct: 0.1
+
+dependencies:
+  required:
+    - shared-infra
+    - ERP-IAM
+  optional:
+    - ERP-AIOps
+    - ERP-MessageBus
