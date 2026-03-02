@@ -1,0 +1,71 @@
+# Health heartbeat emitter for ERP-eCommerce
+# Emits health status every 30s to aiops.module.health topic
+
+input:
+  generate:
+    mapping: |
+      root.event_id = uuid_v4()
+      root.tenant_id = "system"
+      root.event_type = "health.heartbeat"
+      root.producer = "erp-ecommerce"
+      root.occurred_at = now()
+      root.schema_version = "1.0"
+      root.module_name = "erp-ecommerce"
+    interval: "30s"
+
+pipeline:
+  processors:
+    # Check gateway health
+    - branch:
+        request_map: "root = \"\""
+        processors:
+          - http:
+              url: "${GATEWAY_URL:-http://erp-ecommerce-gateway:8090}/healthz"
+              verb: GET
+              timeout: "5s"
+        result_map: |
+          root.gateway_healthy = this.status == "healthy"
+          root.gateway_response = this
+
+    # Check Hasura health
+    - branch:
+        request_map: "root = \"\""
+        processors:
+          - http:
+              url: "${HASURA_URL:-http://erp-ecommerce-hasura:8080}/healthz"
+              verb: GET
+              timeout: "5s"
+        result_map: |
+          root.hasura_healthy = this == "OK" || this.status == "healthy"
+
+    # Determine overall status
+    - bloblang: |
+        root = this
+        root.status = if this.gateway_healthy == true && this.hasura_healthy == true {
+          "healthy"
+        } else if this.gateway_healthy == true || this.hasura_healthy == true {
+          "degraded"
+        } else {
+          "critical"
+        }
+        root.metadata = {
+          "gateway_healthy": this.gateway_healthy,
+          "hasura_healthy": this.hasura_healthy
+        }
+
+output:
+  kafka:
+    addresses:
+      - "${REDPANDA_BROKERS:-redpanda:9092}"
+    topic: "aiops.module.health"
+    key: "${! this.producer }"
+    compression: lz4
+    metadata:
+      include_patterns:
+        - ".*"
+    tls:
+      enabled: "${REDPANDA_TLS_ENABLED:-false}"
+    sasl:
+      mechanism: "${REDPANDA_SASL_MECHANISM:-SCRAM-SHA-256}"
+      user: "${REDPANDA_SASL_USER:-erp-ecommerce-svc}"
+      password: "${REDPANDA_SASL_PASSWORD:-}"
