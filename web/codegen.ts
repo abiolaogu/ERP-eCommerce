@@ -2,7 +2,7 @@ import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
   schema: [
-    process.env.VITE_GRAPHQL_URL || "http://localhost:4000/graphql",
+    process.env.VITE_GRAPHQL_URL || "http://localhost:8090/v1/graphql",
   ],
   documents: ["src/graphql/**/*.graphql"],
   generates: {

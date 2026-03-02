@@ -202,7 +202,7 @@ const OrderShow: React.FC = () => {
         </Col>
 
         <Col xs={24} md={8}>
-          <Space direction="vertical" size={16} style={{ width: "100%" }}>
+          <Space orientation="vertical" size={16} style={{ width: "100%" }}>
             <Card title="Customer" style={{ borderRadius: 10 }}>
               <Descriptions column={1} size="small">
                 <Descriptions.Item label="Name">

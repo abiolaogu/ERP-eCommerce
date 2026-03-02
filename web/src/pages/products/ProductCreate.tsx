@@ -105,7 +105,7 @@ const ProductCreate: React.FC = () => {
                 <TextArea rows={4} placeholder="Describe the product in detail..." />
               </Form.Item>
 
-              <Divider orientation="left">Images</Divider>
+              <Divider titlePlacement="start">Images</Divider>
 
               <Dragger
                 name="images"
@@ -165,7 +165,7 @@ const ProductCreate: React.FC = () => {
               </Form.Item>
             </Card>
 
-            <Space style={{ width: "100%" }} direction="vertical">
+            <Space style={{ width: "100%" }} orientation="vertical">
               <Button type="primary" htmlType="submit" block size="large" loading={isLoading}>
                 Create Product
               </Button>
