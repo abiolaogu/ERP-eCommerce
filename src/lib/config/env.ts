@@ -9,8 +9,7 @@ export const env = {
   defaultTenant: process.env.NEXT_PUBLIC_DEFAULT_TENANT ?? "tenant-default",
   authPolicy: process.env.NEXT_PUBLIC_AUTH_POLICY ?? "demo-token-fallback",
   prefillEmail: process.env.NEXT_PUBLIC_LOGIN_PREFILL_EMAIL ?? "",
-  prefillPassword:
-    process.env.NEXT_PUBLIC_LOGIN_PREFILL_PASSWORD ?? "",
+  prefillPassword: process.env.NEXT_PUBLIC_LOGIN_PREFILL_PASSWORD ?? "",
   authentikIssuer:
     process.env.AUTHENTIK_ISSUER_URL ??
     "http://localhost:9000/application/o/erp/",
