@@ -159,7 +159,7 @@ const CustomerShow: React.FC = () => {
 
             <Divider />
 
-            <Space direction="vertical" size={12} style={{ width: "100%", textAlign: "left" }}>
+            <Space orientation="vertical" size={12} style={{ width: "100%", textAlign: "left" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <MailOutlined style={{ color: "#8c8c8c" }} />
                 <Text style={{ fontSize: 13 }}>{customer.email}</Text>

@@ -37,7 +37,7 @@ const LoginPage: React.FC = () => {
         }}
         bodyStyle={{ padding: 40 }}
       >
-        <Space direction="vertical" size={24} style={{ width: "100%" }}>
+        <Space orientation="vertical" size={24} style={{ width: "100%" }}>
           <div style={{ textAlign: "center" }}>
             <div
               style={{

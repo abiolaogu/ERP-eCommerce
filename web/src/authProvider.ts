@@ -1,7 +1,7 @@
 import type { AuthBindings } from "@refinedev/core";
 
 const TOKEN_KEY = "ecommerce_auth_token";
-const IAM_URL = import.meta.env.VITE_IAM_URL || "http://localhost:4001/auth";
+const IAM_URL = import.meta.env.VITE_IAM_URL || "http://localhost:8081";
 
 interface JWTPayload {
   sub: string;

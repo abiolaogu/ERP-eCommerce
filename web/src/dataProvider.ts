@@ -1,7 +1,7 @@
 import type { DataProvider } from "@refinedev/core";
 import { GraphQLClient, gql } from "graphql-request";
 
-const GRAPHQL_URL = import.meta.env.VITE_GRAPHQL_URL || "http://localhost:4000/graphql";
+const GRAPHQL_URL = import.meta.env.VITE_GRAPHQL_URL || "http://localhost:8090/v1/graphql";
 const TENANT_ID = import.meta.env.VITE_TENANT_ID || "default-tenant";
 const TOKEN_KEY = "ecommerce_auth_token";
 

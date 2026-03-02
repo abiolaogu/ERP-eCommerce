@@ -118,7 +118,7 @@ const ProductShow: React.FC = () => {
         <Col xs={24} md={8}>
           <Card style={{ borderRadius: 10, textAlign: "center" }}>
             <Image.PreviewGroup>
-              <Space direction="vertical" size={12}>
+              <Space orientation="vertical" size={12}>
                 <Image
                   width="100%"
                   style={{ borderRadius: 8, maxHeight: 300, objectFit: "cover" }}
