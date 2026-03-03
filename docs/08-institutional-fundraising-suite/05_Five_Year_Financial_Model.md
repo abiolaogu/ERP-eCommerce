@@ -1,56 +1,99 @@
-# ERP-eCommerce 5-Year Financial Model
+# Sovereign eCommerce — Five-Year Financial Model
 
 All values in $M unless noted.
 
 ## Revenue, Cost, and EBITDA
 
-| Line Item | Y1 | Y2 | Y3 | Y4 | Y5 |
-|---|---:|---:|---:|---:|---:|
-| Revenue | 5.04 | 13.36 | 31.40 | 60.29 | 103.70 |
-| Cost of Revenue | 1.41 | 3.34 | 6.91 | 11.46 | 16.59 |
-| Gross Profit | 3.63 | 10.02 | 24.49 | 48.83 | 87.11 |
-| R&D | 5.95 | 11.49 | 17.90 | 21.70 | 25.93 |
-| Sales & Marketing | 7.26 | 13.76 | 21.04 | 26.53 | 32.15 |
-| G&A | 3.12 | 5.21 | 8.16 | 10.85 | 14.52 |
-| EBITDA | -12.70 | -20.44 | -22.61 | -10.25 | 14.51 |
+| Metric | Year 1 | Year 2 | Year 3 | Year 4 | Year 5 |
+|--------|--------|--------|--------|--------|--------|
+| **Revenue** | | | | | |
+| GMV Revenue | 1.1 | 4.2 | 10.8 | 22.0 | 36.0 |
+| Platform Subscription | 1.4 | 3.6 | 8.4 | 15.4 | 23.1 |
+| Payment Processing Markup | 0.6 | 1.4 | 3.0 | 5.6 | 8.6 |
+| App Marketplace | 0.1 | 0.4 | 1.2 | 2.4 | 4.3 |
+| Professional Services | 0.4 | 0.4 | 0.6 | 0.6 | 0.0 |
+| **Total Revenue** | **3.6** | **10.0** | **24.0** | **46.0** | **72.0** |
+| | | | | | |
+| **COGS** | | | | | |
+| Cloud Infrastructure (CDN, compute, storage) | 0.5 | 1.1 | 2.4 | 3.7 | 5.0 |
+| Payment Processing Costs | 0.3 | 0.8 | 1.8 | 3.2 | 4.7 |
+| Search Engine (Meilisearch hosting) | 0.1 | 0.2 | 0.4 | 0.6 | 0.8 |
+| Support Team | 0.2 | 0.6 | 1.4 | 2.7 | 4.0 |
+| **Total COGS** | **1.1** | **2.7** | **6.0** | **10.2** | **14.5** |
+| **Gross Profit** | **2.5** | **7.3** | **18.0** | **35.8** | **57.5** |
+| **Gross Margin** | **69%** | **73%** | **75%** | **78%** | **80%** |
+| | | | | | |
+| **Operating Expenses** | | | | | |
+| Engineering (R&D) | 4.0 | 7.2 | 10.8 | 14.4 | 18.0 |
+| Sales & Marketing | 2.8 | 4.5 | 6.0 | 8.0 | 10.0 |
+| Customer Success | 1.2 | 2.2 | 3.6 | 5.4 | 7.2 |
+| General & Admin | 1.2 | 1.6 | 2.0 | 2.8 | 3.5 |
+| App Developer Relations | 0.1 | 0.3 | 0.6 | 1.0 | 1.5 |
+| **Total OpEx** | **9.3** | **15.8** | **23.0** | **31.6** | **40.2** |
+| | | | | | |
+| **EBITDA** | **(6.8)** | **(8.5)** | **(5.0)** | **4.2** | **17.3** |
+| **EBITDA Margin** | **(189%)** | **(85%)** | **(21%)** | **9%** | **24%** |
 
-## Cash Flow and Burn
+## Key SaaS Metrics
 
-| Cash Flow Item | Y1 | Y2 | Y3 | Y4 | Y5 |
-|---|---:|---:|---:|---:|---:|
-| EBITDA | -12.70 | -20.44 | -22.61 | -10.25 | 14.51 |
-| Capex | 0.45 | 1.07 | 2.20 | 3.62 | 5.19 |
-| Working Capital Delta | 0.20 | 0.40 | 0.63 | 0.90 | 1.04 |
-| Free Cash Flow | -13.35 | -21.91 | -25.44 | -14.77 | 8.28 |
-| Monthly Burn (if negative) | 1.11 | 1.83 | 2.12 | 0.00 | 0.00 |
+| Metric | Year 1 | Year 2 | Year 3 | Year 4 | Year 5 |
+|--------|--------|--------|--------|--------|--------|
+| Active Merchants (end of year) | 1,800 | 5,000 | 12,000 | 22,000 | 33,000 |
+| Net New Merchants | 1,800 | 3,800 | 8,200 | 12,000 | 13,000 |
+| Churned Merchants | 0 | 600 | 1,200 | 2,000 | 2,000 |
+| MRR (end of year, $K) | 300 | 833 | 2,000 | 3,833 | 6,000 |
+| ARR ($M) | 3.6 | 10.0 | 24.0 | 46.0 | 72.0 |
+| ARR Growth | N/A | 178% | 140% | 92% | 57% |
+| Net Revenue Retention | 125% | 128% | 128% | 125% | 122% |
+| Gross Revenue Retention | 88% | 90% | 92% | 93% | 94% |
+| Monthly Merchant Churn | 4.5% | 3.5% | 2.8% | 2.2% | 1.8% |
+| Platform GMV ($B) | 0.8 | 3.0 | 9.0 | 20.0 | 36.0 |
+| ARPU (monthly, all tiers) | $167 | $167 | $167 | $175 | $182 |
+
+## Cash Flow and Funding
+
+| Metric | Year 1 | Year 2 | Year 3 | Year 4 | Year 5 |
+|--------|--------|--------|--------|--------|--------|
+| Beginning Cash | 12.0 | 5.6 | 0.1 | 1.1 | 8.3 |
+| Net Cash from Operations | (6.4) | (7.5) | (4.0) | 2.2 | 14.3 |
+| Capital Expenditure | (0.0) | (0.0) | (0.0) | (0.0) | (0.0) |
+| Series B Proceeds | 0.0 | 2.0 | 5.0 | 0.0 | 0.0 |
+| **Ending Cash** | **5.6** | **0.1** | **1.1** | **3.3** | **22.6** |
+
+*Note: Model shows lean bridge scenario. Full Series B of $30-40M expected in Year 2-3 for aggressive growth.*
 
 ## Unit Economics
 
-| Metric | Y1 | Y2 | Y3 | Y4 | Y5 |
-|---|---:|---:|---:|---:|---:|
-| CAC ($k) | 162.30 | 147.69 | 129.97 | 111.77 | 93.89 |
-| ACV ($k) | 125 | 143.75 | 168.19 | 191.74 | 214.75 |
-| LTV ($k) | 818.18 | 1078.12 | 1457.65 | 1941.37 | 2577.00 |
-| LTV/CAC | 5.04x | 7.30x | 11.22x | 17.37x | 27.45x |
-| CAC Payback (months) | 21.64 | 16.44 | 11.89 | 8.64 | 6.25 |
+| Metric | Year 1 | Year 3 | Year 5 |
+|--------|--------|--------|--------|
+| Blended CAC | $800 | $450 | $350 |
+| Monthly ARPU | $167 | $167 | $182 |
+| Gross Margin per Merchant (monthly) | $115 | $125 | $146 |
+| Payback Period (months) | 7 | 4 | 2.4 |
+| 36-Month LTV | $4,200 | $7,200 | $9,400 |
+| LTV:CAC Ratio | 5.3x | 16.0x | 26.9x |
+| Magic Number | 0.4 | 1.1 | 1.6 |
 
-## Sensitivity Analysis
+## Cohort Revenue Analysis (Monthly Cohort)
 
-| Scenario | Y5 Revenue ($M) | Y5 EBITDA ($M) |
-|---|---:|---:|
-| Downside | 72.59 | 6.53 |
-| Base | 103.70 | 14.51 |
-| Upside | 136.88 | 18.57 |
+| Month | Cohort Size | Month 1 MRR | Month 6 MRR | Month 12 MRR | 12-Mo NRR |
+|-------|-------------|-------------|-------------|-------------|-----------|
+| Jan 2026 | 100 | $5,900 | $7,800 | $9,200 | 156% |
+| Apr 2026 | 140 | $8,260 | $10,900 | $12,600 | 153% |
+| Jul 2026 | 180 | $10,620 | $13,500 | TBD | TBD |
+| Oct 2026 | 220 | $12,980 | TBD | TBD | TBD |
 
-## Investor Return Logic
+*Early cohorts show strong expansion from tier upgrades and GMV growth.*
 
-| Scenario | Exit EV ($M) | Investor Proceeds ($M) | MOIC | IRR |
-|---|---:|---:|---:|---:|
-| Downside | 477.02 | 85.86 | 4.09x | 32.5% |
-| Base | 746.64 | 134.40 | 6.40x | 45.0% |
-| Upside | 1119.96 | 201.59 | 9.60x | 57.2% |
+## Revenue Sensitivity Analysis
 
-Calculation notes:
+| Scenario | Year 3 ARR | Year 5 ARR | Key Assumptions |
+|----------|-----------|-----------|-----------------|
+| Bear Case | $15M | $42M | 40% fewer merchants, 110% NRR, higher churn |
+| Base Case | $24M | $72M | Model assumptions as stated |
+| Bull Case | $32M | $95M | 25% more merchants, 135% NRR, faster international |
 
-- MOIC = Investor proceeds / $21M investment
-- IRR = (MOIC^(1/5)) - 1
+---
+
+*Confidential — For Institutional Investor Use Only*
+*Sovereign eCommerce, Inc. | March 2026*

@@ -1,0 +1,62 @@
+# AIOps Health Emitter — ERP-eCommerce
+# Redpanda Connect pipeline: emits health heartbeats every 30s
+# to aiops.module.health for AIOps cross-module monitoring.
+
+input:
+  generate:
+    interval: "30s"
+    mapping: |
+      let event_id = uuid_v4()
+      let timestamp = now()
+      let module = "ecommerce"
+
+      let gw = try(http_get("http://erp-ecommerce-gateway:8090/health")) catch "err"
+      let gw_ok = $gw != "err"
+
+      let hs = try(http_get("http://erp-ecommerce-hasura:19110/healthz")) catch "err"
+      let hs_ok = $hs != "err"
+
+      let status = if $gw_ok && $hs_ok {
+        "healthy"
+      } else if $gw_ok || $hs_ok {
+        "degraded"
+      } else {
+        "critical"
+      }
+
+      root.event_id = $event_id
+      root.tenant_id = env("TENANT_ID").or("default")
+      root.module_name = $module
+      root.event_type = "health.heartbeat"
+      root.producer = "erp-" + $module
+      root.status = $status
+      root.gateway_healthy = $gw_ok
+      root.hasura_healthy = $hs_ok
+      root.timestamp = $timestamp
+      root.metadata.hostname = hostname()
+      root.metadata.version = env("APP_VERSION").or("unknown")
+
+pipeline:
+  processors:
+    - mapping: |
+        root = this
+        root.envelope.schema_version = "1.0"
+        root.envelope.source = "erp-ecommerce"
+        root.envelope.destination = "erp-aiops"
+        root.envelope.correlation_id = this.event_id
+
+output:
+  kafka:
+    addresses:
+      - "${REDPANDA_BROKERS:localhost:9092}"
+    topic: "${ENV:dev}.${ORG:abiola}.erp.aiops.module.health"
+    client_id: "erp-ecommerce-health-emitter"
+    key: "ecommerce"
+    compression: snappy
+    max_in_flight: 1
+    sasl:
+      mechanism: SCRAM-SHA-256
+      user: "svc-erp-ecommerce"
+      password: "${REDPANDA_PASSWORD:}"
+    tls:
+      enabled: "${REDPANDA_TLS_ENABLED:false}"
