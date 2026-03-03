@@ -1,69 +1,72 @@
-# ERP-eCommerce Executive Summary (Institutional Version)
+# Sovereign eCommerce — Executive Summary (Institutional Version)
 
 ## Investment Thesis
 
-ERP-eCommerce addresses a structurally large, mission-critical operating category with a technology model designed for recurring revenue durability, expansion economics, and governance-grade reliability.
+The $8 billion eCommerce platform market is undergoing a structural shift. D2C brands need platforms that combine storefront simplicity with headless flexibility and built-in growth tools (subscriptions, personalization, A/B testing). Shopify dominates on simplicity but lacks headless flexibility. Open-source alternatives (Medusa, Saleor) offer flexibility but require engineering teams to deploy. Sovereign eCommerce delivers both in a single platform — a visual builder that non-technical merchants can use today, backed by a headless API that developers can build on tomorrow.
 
-## Problem and Timing
+## The Problem
 
-Enterprises in Merchants and marketplace operators pursuing category leadership in digital channels face fragmented systems, low decision traceability, and growing compliance burden. Budget priority has shifted from discretionary tooling to measurable operating leverage, creating a timely adoption window.
+D2C brands face a painful tradeoff when choosing a commerce platform:
 
-## Product and Defensibility
+1. **Simplicity vs. Flexibility**: Shopify is easy to use but constrains brands to its theme system, checkout, and limited APIs. Brands wanting unique customer experiences must hack around Shopify's limitations or migrate to expensive custom builds.
 
-- Integrated web + API + admin control architecture
-- Tenant- and org-aware governance controls
-- Audit-grade event and policy traceability
-- Category-specific automation and decision support
+2. **Essential Tools Are Expensive Add-Ons**: Subscription commerce costs $300-$1,000/month (Recharge, Bold). Personalization costs $500-$2,000/month (Nosto, Dynamic Yield). A/B testing requires another tool. A typical D2C tech stack costs $2,000-$5,000/month in add-on tools before the platform fee.
 
-## Business Model Summary
+3. **Cart Abandonment Remains Unsolved**: 69.8% of shopping carts are abandoned. The top reasons — unexpected costs, complex checkout, limited payment options — are platform-level problems that no bolt-on tool can fully solve.
 
-Subscription + GMV-tier usage + optimization module fees
+4. **Conversion Rate Stagnation**: Average eCommerce conversion rate has been flat at 2.1% for five years despite massive traffic acquisition spending. The problem is not traffic — it is on-site experience, search quality, and personalization.
 
-Revenue quality is anchored in recurring subscription and expansion-linked usage economics. Services remain controlled to preserve software margin profile.
+## The Solution
 
-## Financial Snapshot
+Sovereign eCommerce is a composable commerce platform that eliminates the trade-off between simplicity and flexibility:
 
-| Metric ($M) | Y1 | Y2 | Y3 | Y4 | Y5 |
-|---|---:|---:|---:|---:|---:|
-| Revenue | 5.04 | 13.36 | 31.40 | 60.29 | 103.70 |
-| EBITDA | -12.70 | -20.44 | -22.61 | -10.25 | 14.51 |
-| Free cash flow | -13.35 | -21.91 | -25.44 | -14.77 | 8.28 |
-| Gross margin | 72% | 75% | 78% | 81% | 84% |
+- **Visual Storefront Builder**: Drag-and-drop page builder with live preview, responsive design, and Core Web Vitals optimization. Launch a store in hours, not weeks.
 
-## Funding and Value Creation Plan
+- **Headless API**: Complete REST and GraphQL APIs enabling any frontend (Next.js, React Native, custom) to consume commerce services. SDKs for JavaScript, React, and mobile.
 
-ERP-eCommerce is raising $21M to scale GTM density, accelerate product moat creation, and harden institutional operating controls. The plan is milestone-gated and linked to NRR, CAC payback, and EBITDA inflection.
+- **Native Subscription Commerce**: Subscribe-and-save, curated boxes, and membership tiers built into the core platform. No third-party app required.
 
-## Return Logic
+- **ML Recommendation Engine**: Collaborative filtering, content-based, and personalized recommendations driving 15-25% of revenue for active merchants.
 
-| Scenario | Exit EV ($M) | Investor Proceeds ($M) | MOIC | IRR |
-|---|---:|---:|---:|---:|
-| Downside | 477.02 | 85.86 | 4.09x | 32.5% |
-| Base | 746.64 | 134.40 | 6.40x | 45.0% |
-| Upside | 1119.96 | 201.59 | 9.60x | 57.2% |
+- **Conversion Optimization Suite**: One-page checkout, Apple Pay/Google Pay express checkout, abandoned cart recovery, A/B testing framework — all included.
 
-## Institutional Recommendation Frame
+- **Edge-Optimized Rendering**: SSR/ISR storefront rendering with CDN edge caching at 200+ global PoPs for sub-2.5s LCP worldwide.
 
-This opportunity is underwritten by: (1) category-scale TAM, (2) recurring and expansion economics, (3) margin and cash-flow operating leverage, and (4) multiple credible exit pathways.
+## Traction
 
-## Institutional Diligence Snapshot
+| Metric | Value |
+|--------|-------|
+| MRR | $185K |
+| Active Merchants | 620 |
+| Platform GMV (trailing 12 months) | $280M |
+| Average Conversion Rate (merchant median) | 3.2% (vs. 2.1% industry avg) |
+| Subscription Feature Adoption | 34% of merchants |
+| Net Revenue Retention | 128% |
+| Self-Service Signup Rate | 85% of new merchants |
 
-### Strategic Proof Points
+## The Ask
 
-- Category demand is not speculative; it is tied to measurable operating inefficiencies and governance pressure.
-- Product architecture is designed for enterprise trust: policy controls, auditability, and reliability are first-class controls.
-- Commercial model compounds through retention and expansion rather than one-time project dependency.
+**$12M Series A** to accelerate product development (AI personalization, advanced subscriptions, marketplace), scale merchant acquisition (from 620 to 5,000+ merchants), and expand internationally.
 
-### Capital Efficiency Scorecard
+## Use of Funds
 
-| Dimension | Institutional Expectation | Current Direction |
-|---|---|---|
-| Revenue quality | recurring and expansion-led | aligned |
-| CAC efficiency | declining payback over time | aligned |
-| Margin profile | expanding software gross margin | aligned |
-| Governance quality | board-grade KPI and risk controls | aligned |
-| Exit optionality | strategic and public market pathways | aligned |
+| Category | Amount | % |
+|----------|--------|---|
+| Engineering / R&D | $5.4M | 45% |
+| Sales & Marketing | $3.6M | 30% |
+| Customer Success / Support | $1.8M | 15% |
+| G&A / Operations | $1.2M | 10% |
 
-### Investment Committee Framing
+## Target Outcomes (24 months post-close)
 
-The opportunity is investable when evaluated on quality-adjusted growth: not only top-line scale, but also retention durability, margin expansion, and controllable downside risk. The model supports disciplined capital deployment and transparent milestone accountability.
+- MRR: $1.2M ($14.4M ARR, 6.5x growth)
+- Active Merchants: 4,500
+- Platform GMV: $3.5B+
+- Subscription merchants: 50%+ of base
+- Gross margin: 75%+
+- Position for $30-40M Series B at $150M+ valuation
+
+---
+
+*Confidential — For Institutional Investor Use Only*
+*Sovereign eCommerce, Inc. | March 2026*
