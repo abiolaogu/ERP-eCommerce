@@ -1,0 +1,5 @@
+base_url: http://localhost:8780
+mock_mode: true
+timeout_ms: 10000
+retries: 2
+retry_base_delay_ms: 250
