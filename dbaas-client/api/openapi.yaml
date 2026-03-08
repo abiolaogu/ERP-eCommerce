@@ -1,0 +1,304 @@
+openapi: 3.0.3
+info:
+  title: UGCP DBaaS Control API (Client Contract)
+  version: 0.1.0
+servers:
+  - url: http://localhost:8780
+security:
+  - bearerAuth: []
+paths:
+  /healthz:
+    get:
+      summary: Service liveness
+      responses:
+        '200':
+          description: OK
+  /v1/dbaas/instances:
+    post:
+      summary: Provision a DB instance
+      parameters:
+        - in: header
+          name: X-Tenant-ID
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Project-ID
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Idempotency-Key
+          required: false
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInstanceRequest'
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+    get:
+      summary: List DB instances
+      parameters:
+        - in: header
+          name: X-Tenant-ID
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Project-ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of instances
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Instance'
+  /v1/dbaas/instances/{instanceId}:
+    get:
+      summary: Get DB instance
+      parameters:
+        - in: path
+          name: instanceId
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Tenant-ID
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Project-ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Instance details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Instance'
+    delete:
+      summary: Delete DB instance
+      parameters:
+        - in: path
+          name: instanceId
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Tenant-ID
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Project-ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/dbaas/instances/{instanceId}/credentials/rotate:
+    post:
+      summary: Rotate database credentials
+      parameters:
+        - in: path
+          name: instanceId
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Tenant-ID
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Project-ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/dbaas/instances/{instanceId}/backups:
+    post:
+      summary: Create backup
+      parameters:
+        - in: path
+          name: instanceId
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Tenant-ID
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Project-ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/dbaas/backups/{backupId}/restore:
+    post:
+      summary: Restore backup to a new instance
+      parameters:
+        - in: path
+          name: backupId
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Tenant-ID
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Project-ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/dbaas/operations/{operationId}:
+    get:
+      summary: Get operation status
+      parameters:
+        - in: path
+          name: operationId
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Tenant-ID
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Project-ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operation state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    CreateInstanceRequest:
+      type: object
+      required:
+        - name
+        - engine
+        - regionCode
+        - storageGb
+      properties:
+        name:
+          type: string
+        engine:
+          type: string
+          enum: [yugabytedb, tidb, scylladb, mongodb]
+        version:
+          type: string
+        regionCode:
+          type: string
+        plan:
+          type: string
+          enum: [dev, standard, ha]
+        storageGb:
+          type: integer
+        cpu:
+          type: integer
+        memoryGb:
+          type: integer
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    Instance:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        engine:
+          type: string
+        status:
+          type: string
+        regionCode:
+          type: string
+        connection:
+          type: object
+          properties:
+            host:
+              type: string
+            port:
+              type: integer
+            database:
+              type: string
+            username:
+              type: string
+    OperationResponse:
+      type: object
+      properties:
+        operationId:
+          type: string
+        status:
+          type: string
+          enum: [pending, running, succeeded, failed]
+        done:
+          type: boolean
+        instanceId:
+          type: string
+        backupId:
+          type: string
+        error:
+          type: string

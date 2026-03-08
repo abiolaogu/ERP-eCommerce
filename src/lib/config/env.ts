@@ -5,7 +5,7 @@ export const env = {
   cosmoUrl: process.env.NEXT_PUBLIC_COSMO_URL ?? "http://localhost:3002/graphql",
   centrifugoUrl:
     process.env.NEXT_PUBLIC_CENTRIFUGO_URL ??
-    "http://localhost:8000/connection/websocket",
+    "ws://localhost:8000/connection/websocket",
   defaultTenant: process.env.NEXT_PUBLIC_DEFAULT_TENANT ?? "tenant-default",
   authPolicy: process.env.NEXT_PUBLIC_AUTH_POLICY ?? "demo-token-fallback",
   prefillEmail: process.env.NEXT_PUBLIC_LOGIN_PREFILL_EMAIL ?? "",
@@ -14,6 +14,10 @@ export const env = {
     process.env.AUTHENTIK_ISSUER_URL ??
     "http://localhost:9000/application/o/erp/",
   authentikClientId: process.env.AUTHENTIK_CLIENT_ID ?? "replace-with-client-id",
+  dbaasBaseUrl: process.env.NEXT_PUBLIC_DBAAS_BASE_URL ?? "http://localhost:8780",
+  dbaasDefaultProject: process.env.NEXT_PUBLIC_DBAAS_PROJECT ?? "ecommerce-core",
+  dbaasMockMode:
+    (process.env.NEXT_PUBLIC_DBAAS_MOCK_MODE ?? "true").toLowerCase() === "true",
 };
 
 export type AuthPolicy = "iam-only" | "dev-token-fallback" | "demo-token-fallback";

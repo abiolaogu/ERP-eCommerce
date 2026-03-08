@@ -8,7 +8,12 @@
     "start": "next start -p 5192",
     "typecheck": "tsc --noEmit",
     "lint": "tsc --noEmit",
-    "test": "echo \"No tests configured\""
+    "test": "echo \"No tests configured\"",
+    "prepare:dbaas-client": "npx tsc -p dbaas-client/tsconfig.json",
+    "predev": "npm run prepare:dbaas-client",
+    "prebuild": "npm run prepare:dbaas-client",
+    "pretypecheck": "npm run prepare:dbaas-client",
+    "prelint": "npm run prepare:dbaas-client"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",

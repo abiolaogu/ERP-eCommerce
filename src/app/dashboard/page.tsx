@@ -1,5 +1,6 @@
 import { HybridNavLayout } from "@/components/hybrid-nav";
 import { ControlCenterPanel } from "@/features/control-center/ui/control-center-panel";
+import { DbaasPanel } from "@/features/dbaas/ui/dbaas-panel";
 import { modulePolicy } from "@/lib/config/module-policy";
 
 export default function DashboardPage() {
@@ -13,6 +14,7 @@ export default function DashboardPage() {
           </p>
         </header>
         <ControlCenterPanel />
+        <DbaasPanel />
       </section>
     </HybridNavLayout>
   );
